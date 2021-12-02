@@ -1,0 +1,72 @@
+version: '2.2'
+
+services:
+  backend:
+    build:
+      context: backend/
+      dockerfile: Dockerfile
+    container_name: backend_garbage
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    expose:
+      - 8000
+    volumes:
+      - ./media:/home/app/media
+    networks:
+      - net_garbage
+    logging:
+      options:
+        max-size: 10m
+
+  db:
+    image: postgres:11
+    container_name: db_garbage
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    ports:
+      - 5437:5432
+    networks:
+      - net_garbage
+    logging:
+      options:
+        max-size: 10m
+
+  nginx:
+    image: nginx:mainline-alpine
+    container_name: nginx_garbage
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - backend
+    networks:
+      - net_garbage
+    logging:
+      options:
+        max-size: 10m
+
+  frontend:
+    build:
+      context: ./
+      dockerfile: frontend/Dockerfile
+    container_name: frontend_garbage
+    env_file:
+      - ./.env
+    depends_on:
+      - backend
+    expose:
+      - 80
+    volumes:
+      - ./frontend_node_modules:/home/app/node_modules
+    networks:
+      - net_garbage
+
+networks:
+  net_garbage:
+    driver: bridge

@@ -1,0 +1,13 @@
+pillow
+requests
+jupyter
+numpy
+pandas
+matplotlib
+seaborn
+graphviz
+Cython
+#tensorflow==1.13.1
+#keras==2.0.8
+#h5py==2.10.0
+#imgaug
