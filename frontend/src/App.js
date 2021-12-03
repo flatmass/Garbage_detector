@@ -37,8 +37,7 @@ const App = () => {
                         <LoginPage />
                     </Route>
                     <Route exact path="/" >
-                        <Header params={headerParam}/>
-                        <TaskPage itemId={0} />
+                        <IndexPage/>
                     </Route>
                     <Route exact path="/bot" >
                         <BotPage/>

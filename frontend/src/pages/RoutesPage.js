@@ -9,8 +9,8 @@ const RoutePage = () => {
                 <TaskList itemId={1}/>
             </Grid>
             <Grid item xs={8}>
-                <div className={"bg-gray"}>
-                    <div className={"task_window"}>
+                <div className="bg-gray">
+                    <div className="task_window">
                         <RouteMap/>
                     </div>
                 </div>

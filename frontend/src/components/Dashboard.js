@@ -58,32 +58,36 @@ const COLORS = ['#e6bd00', '#da6193', '#8564fe', '#3054cc', '#09b3fe', '#82c41d'
 
 const Dashboard = () => {
     return (
-        <div style={{padding: '16px'}}>
-            <Grid container spacing={2}>
-                <Grid item xs={8}>
-                    <div style={{ width: '100%', height: '100%', boxSizing: 'border-box' }}>
-                        <HeathMap />
-                    </div>
-                </Grid>
-                <Grid item xs={4}>
-                    <Card>
-                        <CardHeader title="Заполненность баков" />
-                        <CardContent style={{ width: '100%', height: 400, boxSizing: 'border-box' }}>
-                            <ResponsiveContainer>
-                                <BarChart width={'100%'} height={'100%'} data={data}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="name" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                    <Bar dataKey="pv" fill="#8884d8" />
-                                    <Bar dataKey="uv" fill="#82ca9d" />
-                                </BarChart>
-                            </ResponsiveContainer>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid>
+        <div className="bg-gray">
+            <div className="task_window">
+                <div style={{padding: '16px'}}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={8}>
+                            <div style={{ width: '100%', height: '100%', boxSizing: 'border-box' }}>
+                                <HeathMap />
+                            </div>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Card>
+                                <CardHeader title="Заполненность баков" />
+                                <CardContent style={{ width: '100%', height: 400, boxSizing: 'border-box' }}>
+                                    <ResponsiveContainer>
+                                        <BarChart width={'100%'} height={'100%'} data={data}>
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <XAxis dataKey="name" />
+                                            <YAxis />
+                                            <Tooltip />
+                                            <Legend />
+                                            <Bar dataKey="pv" fill="#8884d8" />
+                                            <Bar dataKey="uv" fill="#82ca9d" />
+                                        </BarChart>
+                                    </ResponsiveContainer>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </div>
+            </div>
         </div>
     )
 };

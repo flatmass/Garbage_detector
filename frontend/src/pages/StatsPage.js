@@ -58,6 +58,8 @@ const COLORS = ['#e6bd00', '#da6193', '#8564fe', '#3054cc', '#09b3fe', '#82c41d'
 
 const Dashboard = () => {
     return (
+        <div className="bg-gray">
+                    <div className="task_window">
         <div style={{padding: '16px'}}>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
@@ -112,6 +114,8 @@ const Dashboard = () => {
                     </Card>
                 </Grid>
             </Grid>
+        </div>
+        </div>
         </div>
     )
 };
