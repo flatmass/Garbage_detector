@@ -15,7 +15,7 @@ const TaskListItem = ({ itemId, item }) => {
 
     let date = new Date(item.time_open);
     let time = `${date.getHours()}:${date.getSeconds()}`;
-    console.log(date);
+
 
     return (
         <Link to={`/tasks/${item.id}`} className={ Number(itemId) === Number(item.id) ? "tasklist_item active" : "tasklist_item" }>
@@ -28,7 +28,7 @@ const TaskListItem = ({ itemId, item }) => {
                 <div className="listitem_camera_title">{ item.label }</div>
                 <div className="tasklist_first_line">
                     <span className="listitem_camera_nbr">{ time }</span>
-                    <span className="listitem_camera_nbr"><span className="spacer">Вероятность: </span > <span className="text_bold">{ item.procent }</span> </span>
+                    <span className="listitem_camera_nbr"><span className="spacer">Вероятность: </span > <span className="text_bold">{ item.accuracy }%</span> </span>
                     <span className="listitem_camera_nbr"><span className="spacer"> №: </span > <span className="text_bold">{ item.id }</span> </span>
                 </div>
             </div>

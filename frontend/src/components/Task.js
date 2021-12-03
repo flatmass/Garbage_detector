@@ -7,33 +7,34 @@ import dice from '../media/img/dice.svg'
 
 const Task = ({ itemId }) => {
 
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState(null);
 
     useEffect(() => {
-        fetch(`${host}/incidents/${itemId}`)
-            .then(response => {
-                if (response.status > 400) {
-                    return []
-                }
-                return response.json();
-            })
-            .then(json => {
-                setTask(json);
-            });
+
+            fetch(`${host}/incidents/${itemId}`)
+                .then(response => {
+                    if (response.status > 400) {
+                        return []
+                    }
+                    return response.json();
+                })
+                .then(json => {
+                    setTask(json);
+                });
 
     }, [itemId]);
 
-    let date = new Date(task.time_open);
-    let time = `${date.getHours()}:${date.getSeconds()}`;
-    let data = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`;
+    let date = task ? new Date(task.time_open) : null;
+    let time = task ? `${date.getHours()}:${date.getSeconds()}` : null;
+    let data = task ? `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}` : null;
 
     return (
-        <>
-            <div className={"bg-gray"}>
+        <div className={"bg-gray"}>
+            { itemId !== null && task ?
                 <div className={"task_window"}>
                     <div className={"task_header_info"}>
                         <div className={"task_header_info_left"}>
-                            <p className={"task_address"}>{ task.camera_id }</p>
+                            <p className={"task_address"}>{ task.camera ? task.camera.name : <></> }</p>
                             <img className="taskitem_img" src={vector} alt=""/>
                             <span className={"task_camera_nbr"}><span className={"spacer"}>Камера:</span> <span className={"task_text_bold"}>{ task.camera_id }</span></span>
                         </div>
@@ -58,7 +59,6 @@ const Task = ({ itemId }) => {
 
                     </div>
                     {/*<h1>Задача {itemId}</h1>*/}
-
                     <div className={"task_main"}>
                         <div className={"player_block"}>
                             <Player>
@@ -69,17 +69,15 @@ const Task = ({ itemId }) => {
                             <img className="trash_img" src={trash} alt=""/>
                         </div>
                     </div>
-
-
                     <div className="task_info">
                         <div className="task_info_left">
                             <h2>{task.label}</h2>
                             <div className="task_date_clock">
                                 <span className="task_date">{time}<span className="spacer_left">{data}</span></span>
                                 <img className="dice_img" src={dice} alt=""/>
-                                <span className="task_info_prob"><span className="spacer">Вероятность:</span> <span className="task_info_number_bold">{ task.procent }</span></span>
+                                <span className="task_info_prob"><span className="spacer">Вероятность:</span> <span className="task_info_number_bold">{ task.accuracy }%</span></span>
                             </div>
-                            <p className="task_info_text">Исполнители:</p>
+                            {/*<p className="task_info_text">Исполнители:</p>*/}
                             <p className="task_info_bold_text">{task.executor}</p>
                         </div>
                         <div className="task_info_right">
@@ -91,9 +89,7 @@ const Task = ({ itemId }) => {
                             </div>
                         </div>
                     </div>
-
-
-                    <div className="action_feed">
+                    {/*<div className="action_feed">
                         <h3>Лента действий инцидента</h3>
                         <div className="action_feed_table">
                             <div className="table_gray_row">
@@ -109,14 +105,10 @@ const Task = ({ itemId }) => {
                                 <p>Умеркин Руслан Наильевич подтвердил инцидент и передал в ООО УК ПЖКХ</p>
                             </div>
                         </div>
-
-
-
-                    </div>
-
+                    </div>*/}
                 </div>
-            </div>
-        </>
+                : <></>  }
+        </div>
     )
-}
+};
 export default Task;
