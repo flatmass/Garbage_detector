@@ -20,7 +20,7 @@ python, js, react, Opencv
 2. git clone https://github.com/facebookresearch/detectron2.git </br>
 3. python -m pip install -e detectron2 </br>
 4. Обучение нейросети при помощи detect_model</br>
-5. Запуск инцедент платформы.
+5. Запуск инцедент платформы, в корне проекта выполнить: docker-compose up --build
 
 </br>
 <h4>РАЗРАБОТЧИКИ</h4>
