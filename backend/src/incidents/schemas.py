@@ -4,6 +4,7 @@ from tortoise.contrib.pydantic import PydanticModel
 from tortoise import Tortoise
 from . import models
 from ..base.schemas import GetFile
+from ..cameras.schemas import GetCamera
 from config import db_paths
 
 
@@ -41,4 +42,5 @@ class CreateIncident(PydanticModel):
 
 class GetIncident(CreateIncident):
     id: int
+    camera: GetCamera
     file: GetFile

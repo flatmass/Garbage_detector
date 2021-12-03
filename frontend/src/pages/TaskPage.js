@@ -6,7 +6,7 @@ const TaskPage = ({itemId}) => {
     return (
         <Grid container>
             <Grid item xs={4}>
-                <TaskList />
+                <TaskList itemId={ itemId } />
             </Grid>
             <Grid item xs={8}>
                 <Task itemId={ itemId }/>

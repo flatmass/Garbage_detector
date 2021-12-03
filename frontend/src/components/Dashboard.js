@@ -61,12 +61,9 @@ const Dashboard = () => {
         <div style={{padding: '16px'}}>
             <Grid container spacing={2}>
                 <Grid item xs={8}>
-                    <Card>
-                        <CardHeader title="Переполненные мусорные баки" />
-                        <CardContent style={{ width: '100%', height: 500, boxSizing: 'border-box' }}>
-                            <HeathMap />
-                        </CardContent>
-                    </Card>
+                    <div style={{ width: '100%', height: '100%', boxSizing: 'border-box' }}>
+                        <HeathMap />
+                    </div>
                 </Grid>
                 <Grid item xs={4}>
                     <Card>

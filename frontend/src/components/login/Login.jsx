@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import ky from 'ky';
 import { host } from "../../utils/rawApi";
 
+
 const Login = () => {
 	const history = useHistory();
 
@@ -27,6 +28,7 @@ const Login = () => {
 			}}
 		>
 			<h3>Вход</h3>
+
 			<input type="text" name="" id=""/>
 			<input type="password" name="" id=""/>
 			<input type="submit" value="Отправить"/>

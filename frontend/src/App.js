@@ -24,7 +24,7 @@ const App = () => {
                 <Switch>
                     <Route exact path="/" >
                         <Header/>
-                        <TaskListPage/>
+                        <TaskPage itemId={0} />
                     </Route>
                     <Route exact path="/dashboard" >
                         <Header/>
