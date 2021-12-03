@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.11.0-41-generic-x86_64-with-Ubuntu-20.04-focal",
+    "python": "3.7.12",
+    "heartbeatAt": "2021-12-03T11:32:03.671718",
+    "startedAt": "2021-12-03T11:32:01.777600",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--amp"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/milesial/Pytorch-UNet.git",
+        "commit": "e1a69e7c6ce18edd47271b01e4aabc03b436753d"
+    },
+    "email": "misha31rudland@gmail.com",
+    "root": "/home/lucian/PycharmProjects/Hackathon/detector",
+    "host": "lucian-notebook",
+    "username": "lucian",
+    "executable": "/home/lucian/PycharmProjects/Hackathon/detector/venv/bin/python"
+}

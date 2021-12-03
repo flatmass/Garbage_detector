@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.4.0-42-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "heartbeatAt": "2021-12-03T12:05:29.737441",
+    "startedAt": "2021-12-03T12:05:28.013690",
+    "docker": null,
+    "cpu_count": 2,
+    "cuda": null,
+    "args": [
+        "--amp"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "detector/train.py",
+    "git": {
+        "remote": "https://github.com/flatmass/Garbage_detector.git",
+        "commit": "1d11749b2c9b3856e939a506854509e7b292d127"
+    },
+    "email": null,
+    "root": "/sites/Garbage_detector",
+    "host": "rt",
+    "username": "root",
+    "executable": "/sites/Garbage_detector/detector/venv/bin/python"
+}

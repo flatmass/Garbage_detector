@@ -2,6 +2,7 @@ from enum import IntEnum
 from tortoise import models, fields
 from ..base.models import File
 from ..cameras.models import Camera
+from ..users.models import UserModel
 
 
 class IncidentStatus(IntEnum):
@@ -15,6 +16,12 @@ class IncidentStatus(IntEnum):
 
 class Incident(models.Model):
     id = fields.BigIntField(pk=True)
+    label = fields.CharField(max_length=255)
+    accuracy = fields.SmallIntField()
+    user = fields.ForeignKeyField(
+        'models.UserModel', related_name='incidents',
+        on_delete=fields.SET_NULL, null=True, default=None
+    )
     camera = fields.ForeignKeyField(
         'models.Camera', related_name='incidents', on_delete=fields.CASCADE
     )

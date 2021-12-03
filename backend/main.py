@@ -1,3 +1,5 @@
+import asyncio
+
 from config import DB_URL, db_paths
 from tortoise.contrib.fastapi import register_tortoise
 from fastapi import FastAPI, APIRouter, Depends
@@ -9,6 +11,7 @@ from src.users.routers import (
 from src.users.routers import users_router
 from src.cameras.routers import cameras_router
 from src.incidents.routers import incidents_router
+from src.incidents.consumer import consume
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -61,3 +64,4 @@ register_tortoise(
 @app.on_event('startup')
 async def on_startup():
     await create_superuser.main(True)
+    asyncio.create_task(consume())

@@ -67,27 +67,10 @@ const Dashboard = () => {
                 </Grid>
                 <Grid item xs={4}>
                     <Card>
-                        <CardHeader title="Среднее время закрытия вопроса" />
-                        <CardContent style={{ width: '100%', height: 500, boxSizing: 'border-box' }}>
-                            <ResponsiveContainer>
-                                <LineChart data={data}>
-                                    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="pv" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                </LineChart>
-                            </ResponsiveContainer>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={4}>
-                    <Card>
                         <CardHeader title="Заполненность баков" />
-                        <CardContent style={{ width: '100%', height: 300, boxSizing: 'border-box' }}>
+                        <CardContent style={{ width: '100%', height: 400, boxSizing: 'border-box' }}>
                             <ResponsiveContainer>
-                                <BarChart width={400} height={250} data={data}>
+                                <BarChart width={'100%'} height={'100%'} data={data}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="name" />
                                     <YAxis />
@@ -96,22 +79,6 @@ const Dashboard = () => {
                                     <Bar dataKey="pv" fill="#8884d8" />
                                     <Bar dataKey="uv" fill="#82ca9d" />
                                 </BarChart>
-                            </ResponsiveContainer>ResponsiveContainer>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={4}>
-                    <Card>
-                        <CardHeader title="Замусоренность улиц" />
-                        <CardContent style={{ width: '100%', height: 300, boxSizing: 'border-box' }}>
-                            <ResponsiveContainer>
-                                <PieChart>
-                                    <Pie data={data} dataKey="pv" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" label >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                </PieChart>
                             </ResponsiveContainer>
                         </CardContent>
                     </Card>

@@ -1,37 +1,29 @@
-import React from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import ky from 'ky';
 import { host } from "../../utils/rawApi";
+import { useAuth } from "../../utils/authContext";
 
 
 const Login = () => {
 	const history = useHistory();
+	const [login, setLogin] = useState('');
+	const [password, setPassword] = useState('');
+
+	let auth = useAuth();
+
 
 	return (
-		<form
-			onSubmit={async (values) => {
-				try {
-					const response = await ky
-						.post(`${host}/auth/jwt/login`, {
-							body: new URLSearchParams(values), timeout: 2 * 60 * 1000,
-							credentials: 'include',
-						});
-					if (response.ok){
-						history.push('/');
-						alert('ok')
-					} else {
-						alert('not ok')
-					}
-				} catch (err) {
-					alert(err)
-				}
-			}}
-		>
+		<form>
 			<h3>Вход</h3>
-
-			<input type="text" name="" id=""/>
-			<input type="password" name="" id=""/>
-			<input type="submit" value="Отправить"/>
+			<input type="text" name="" onChange={(e) => {setLogin(e.target.value); console.log(e.target.value)}} id=""/>
+			<input type="password" name="" onChange={(e) => {setPassword(e.target.value); console.log(e.target.value)}} id=""/>
+			<a href="#"  onClick={(e) => {
+				e.preventDefault();
+				auth.signIn(login, password)
+			}}>
+				Отправить
+			</a>
 		</form>
 	);
 };

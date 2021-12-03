@@ -21,18 +21,17 @@ function useAuth() {
 }
 
 function useProvideAuth() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(true);
 
     useEffect(() => {
-        getCurrent()
+        if (user === null)
+            getCurrent()
     }, []);
 
     const getCurrent = () => {
-        // api('/users/me').then((result) => {
-        //     setUser(result)
-        // }).catch((_) => {
-        //     //historyRef.history.push('/login')
-        // });
+        return api('/users/me').then((result) => {
+            setUser(result)
+        });
     };
 
     const signIn = (username, password) => {
@@ -41,30 +40,20 @@ function useProvideAuth() {
             credentials: 'include',
         }).then((response) => {
             if (response.status === 200) {
-                // api('/users/me').then((result) => {
-                //     setUser(result)
-                // }).then(() => {
-                //     historyRef.navigate('/');
-                // }).catch((_) => {
-                //     //historyRef.navigate('/login')
-                // });
+                api('/users/me').then((result) => {
+                    setUser(result)
+                }).then(() => {
+                    historyRef.history.push('/');
+                }).catch((_) => {
+                    historyRef.history.push('/login')
+                });
             } else if (response.status === 401){
                 alert('При аворизации произошла ошибка! Пожалуйста, проверьте логин и пароль')
-                /*NotificationManager.error(
-                    'При аворизации произошла ошибка! Пожалуйста, проверьте логин и пароль',
-                    '', 5000
-                )*/
             } else {
                 alert('Произошла неизвестная ошибка. Попробуйте позже или обратитесь к разработчику')
-                /*NotificationManager.error(
-                    'Произошла неизвестная ошибка. Попробуйте позже или обратитесь к разработчику',
-                    '', 5000
-                )*/
             }
         }).catch(() => console.log(
             alert('Произошла неизвестная ошибка. Попробуйте позже или обратитесь к разработчику')
-           /* 'Произошла неизвестная ошибка. Попробуйте позже или обратитесь к разработчику',
-            '', 5000*/
         ))
     };
 

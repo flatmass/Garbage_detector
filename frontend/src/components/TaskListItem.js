@@ -12,19 +12,24 @@ const TaskListItem = ({ itemId, item }) => {
     // is_success = 5
     // is_reject = 6
 
+
+    let date = new Date(item.time_open);
+    let time = `${date.getHours()}:${date.getSeconds()}`;
+
+
     return (
-        <Link to={`/task/${item.id}`} className={ Number(itemId) === Number(item.id) ? "tasklist_item active" : "tasklist_item" }>
+        <Link to={`/tasks/${item.id}`} className={ Number(itemId) === Number(item.id) ? "tasklist_item active" : "tasklist_item" }>
             <div className="tasklist_item_left">
                 <div className="tasklist_first_line">
                     <span className="listitem_adress">{ item.address }</span>
                     <img className="listitem_img" src={vector} alt=""/>
-                    <span className={"listitem_camera_nbr"}><span className={"spacer"}>Камера: </span> { item.camera_nbr }</span>
+                    <span className={"listitem_camera_nbr"}><span className={"spacer"}>Камера: </span> { item.camera.name }</span>
                 </div>
-                <div className="listitem_camera_title">Уборка дорог</div>
+                <div className="listitem_camera_title">{ item.lable }</div>
                 <div className="tasklist_first_line">
-                    <span className="listitem_camera_nbr">{ item.time }</span>
+                    <span className="listitem_camera_nbr">{ time }</span>
                     <span className="listitem_camera_nbr"><span className="spacer">Вероятность: </span > <span className="text_bold">{ item.procent }</span> </span>
-                    <span className="listitem_camera_nbr"><span className="spacer"> №: </span > <span className="text_bold">{ item.number }</span> </span>
+                    <span className="listitem_camera_nbr"><span className="spacer"> №: </span > <span className="text_bold">{ item.id }</span> </span>
                 </div>
             </div>
             <div className="tasklist_item_right">

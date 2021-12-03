@@ -5,6 +5,7 @@ from tortoise import Tortoise
 from . import models
 from ..base.schemas import GetFile
 from ..cameras.schemas import GetCamera
+from ..users.schemas import GetMinimizeUser
 from config import db_paths
 
 
@@ -21,7 +22,6 @@ class PolygonPointSchema(PydanticModel):
 
 class PolygonSchema(PydanticModel):
     name: str
-    incident_id: int
     points: List[PolygonPointSchema] = []
 
     class Config:
@@ -30,7 +30,9 @@ class PolygonSchema(PydanticModel):
 
 class CreateIncident(PydanticModel):
     camera_id: int
-    time_open: datetime
+    label: str
+    accuracy: int
+    user_id: str
     time_close: Optional[datetime] = None
     status: models.IncidentStatus
     file_id: int
@@ -42,5 +44,7 @@ class CreateIncident(PydanticModel):
 
 class GetIncident(CreateIncident):
     id: int
+    user: GetMinimizeUser
     camera: GetCamera
+    time_open: datetime
     file: GetFile

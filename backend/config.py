@@ -1,5 +1,6 @@
 from os import environ, listdir, mkdir, path
 from typing import List
+import asyncio
 
 
 class DBPaths:
@@ -53,3 +54,5 @@ URL = environ.get('URL', "http://127.0.0.1:8000/api")
 ALLOW_CORS = ("http://51.250.18.129", "http://51.250.18.129:3001")   # tuple(environ.get('ALLOW_CORS', 'http://127.0.0.1:3000').split(' '))
 SECRET = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
+
+loop = asyncio.get_event_loop()

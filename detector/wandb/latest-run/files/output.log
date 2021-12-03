@@ -1,0 +1,27 @@
+INFO: Starting training:
+        Epochs:          5
+        Batch size:      1
+        Learning rate:   1e-05
+        Training size:   90
+        Validation size: 10
+        Checkpoints:     True
+        Device:          cpu
+        Images scaling:  0.5
+        Mixed Precision: True
+/home/lucian/PycharmProjects/Hackathon/detector/venv/lib/python3.7/site-packages/torch/cuda/amp/grad_scaler.py:115: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn("torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.")
+Epoch 1/5:   0%|                                                                                                                                                                                                | 0/90 [00:00<?, ?img/s]/home/lucian/PycharmProjects/Hackathon/detector/venv/lib/python3.7/site-packages/torch/autocast_mode.py:141: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
+Epoch 1/5:   0%|                                                                                                                                                                                                | 0/90 [00:03<?, ?img/s]
+Traceback (most recent call last):
+  File "train.py", line 191, in <module>
+    amp=args.amp)
+  File "train.py", line 93, in train_net
+    loss = criterion(masks_pred, true_masks) \
+  File "/home/lucian/PycharmProjects/Hackathon/detector/venv/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lucian/PycharmProjects/Hackathon/detector/venv/lib/python3.7/site-packages/torch/nn/modules/loss.py", line 1152, in forward
+    label_smoothing=self.label_smoothing)
+  File "/home/lucian/PycharmProjects/Hackathon/detector/venv/lib/python3.7/site-packages/torch/nn/functional.py", line 2846, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+RuntimeError: only batches of spatial targets supported (3D tensors) but got targets of dimension: 4

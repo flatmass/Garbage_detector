@@ -9,7 +9,7 @@ incidents_router = APIRouter(tags=['Incidents'])
 
 @incidents_router.post('', response_model=schemas.GetIncident)
 async def create_incident(schema: schemas.CreateIncident):
-    return services.incident_s.create(schema=schema)
+    return await services.incident_s.create(schema=schema)
 
 
 @incidents_router.post('/upload', response_model=schemas.GetFile)

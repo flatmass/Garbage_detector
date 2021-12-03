@@ -21,6 +21,11 @@ services:
       options:
         max-size: 10m
 
+  rabbitmq:
+    image: 'bitnami/rabbitmq:latest'
+    networks:
+      - net_garbage
+
   db:
     image: postgres:11
     container_name: db_garbage
