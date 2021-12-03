@@ -3,6 +3,7 @@ import { useState , useEffect } from 'react'
 import vector from "../media/img/Vector.svg"
 import trash from "../media/img/trash.png"
 import { host } from '../utils/rawApi'
+import dice from '../media/img/dice.svg'
 
 const Task = ({ itemId }) => {
 
@@ -21,6 +22,10 @@ const Task = ({ itemId }) => {
             });
 
     }, [itemId]);
+
+    let date = new Date(task.time_open);
+    let time = `${date.getHours()}:${date.getSeconds()}`;
+    let data = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`;
 
     return (
         <>
