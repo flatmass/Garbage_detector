@@ -5,13 +5,12 @@ import trash from "../media/img/trash.png"
 import { host } from '../utils/rawApi'
 import dice from '../media/img/dice.svg'
 
-const Task = ({ itemId }) => {
+const Task = ({ itemId, id }) => {
 
     const [task, setTask] = useState(null);
 
     useEffect(() => {
-
-            fetch(`${host}/incidents/${itemId}`)
+            fetch(`${host}/incidents/${itemId !== null ? itemId : id}`)
                 .then(response => {
                     if (response.status > 400) {
                         return []
@@ -21,7 +20,6 @@ const Task = ({ itemId }) => {
                 .then(json => {
                     setTask(json);
                 });
-
     }, [itemId]);
 
     let date = task ? new Date(task.time_open) : null;

@@ -25,7 +25,7 @@ const TaskPage = ({itemId}) => {
                 <TaskList itemId={ itemId } taskList={taskList} />
             </Grid>
             <Grid item xs={8}>
-                <Task itemId={ itemId }/>
+                { taskList.length > 0 ? <Task itemId={ itemId } id={taskList[0].id} /> : <></>}
             </Grid>
         </Grid>
     )
