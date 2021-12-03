@@ -7,6 +7,7 @@ from ..base.schemas import GetFile
 from ..cameras.schemas import GetCamera
 from ..users.schemas import GetMinimizeUser
 from config import db_paths
+from pydantic import UUID4
 
 
 Tortoise.init_models(db_paths.incidents, 'models')
@@ -32,8 +33,7 @@ class CreateIncident(PydanticModel):
     camera_id: int
     label: str
     accuracy: int
-    user_id: str
-    time_close: Optional[datetime] = None
+    user_id: UUID4
     status: models.IncidentStatus
     file_id: int
     polygons: List[PolygonSchema] = []

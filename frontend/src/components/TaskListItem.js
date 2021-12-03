@@ -15,17 +15,17 @@ const TaskListItem = ({ itemId, item }) => {
 
     let date = new Date(item.time_open);
     let time = `${date.getHours()}:${date.getSeconds()}`;
-
+    console.log(date);
 
     return (
         <Link to={`/tasks/${item.id}`} className={ Number(itemId) === Number(item.id) ? "tasklist_item active" : "tasklist_item" }>
             <div className="tasklist_item_left">
                 <div className="tasklist_first_line">
-                    <span className="listitem_adress">{ item.address }</span>
+                    <span className="listitem_adress">{ item.camera.name }</span>
                     <img className="listitem_img" src={vector} alt=""/>
-                    <span className={"listitem_camera_nbr"}><span className={"spacer"}>Камера: </span> { item.camera.name }</span>
+                    <span className={"listitem_camera_nbr"}><span className={"spacer"}>Камера: </span> { item.camera_id }</span>
                 </div>
-                <div className="listitem_camera_title">{ item.lable }</div>
+                <div className="listitem_camera_title">{ item.label }</div>
                 <div className="tasklist_first_line">
                     <span className="listitem_camera_nbr">{ time }</span>
                     <span className="listitem_camera_nbr"><span className="spacer">Вероятность: </span > <span className="text_bold">{ item.procent }</span> </span>

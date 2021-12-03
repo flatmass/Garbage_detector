@@ -17,6 +17,11 @@ async def upload_frame(file: UploadFile = File(...)):
     return await services.incident_s.upload_file(file)
 
 
+@incidents_router.get('/{pk}', response_model=schemas.GetIncident)
+async def get_incident(pk: int):
+    return await services.incident_s.get(id=pk)
+
+
 @incidents_router.get('', response_model=List[schemas.GetIncident])
 async def get_incidents(
         skip: Optional[int] = 0,

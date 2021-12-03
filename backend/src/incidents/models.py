@@ -1,7 +1,7 @@
 from enum import IntEnum
 from tortoise import models, fields
 from ..base.models import File
-from ..cameras.models import Camera
+from ..cameras.models import Camera, AreaPoint, Area
 from ..users.models import UserModel
 
 
