@@ -19,13 +19,16 @@ const TaskPage = ({itemId}) => {
                 setTaskList(json);
             });
     }, []);
+
+     if (taskList.length > 0) {console.log(taskList[0].id) };
+
     return (
         <Grid container>
             <Grid item xs={4}>
                 <TaskList itemId={ itemId } taskList={taskList} />
             </Grid>
             <Grid item xs={8}>
-                { taskList.length > 0 ? <Task itemId={ itemId } id={taskList[0].id} /> : <></>}
+                <Task itemId={ itemId } idItem={ 6 } />
             </Grid>
         </Grid>
     )

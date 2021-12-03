@@ -5,12 +5,12 @@ import trash from "../media/img/trash.png"
 import { host } from '../utils/rawApi'
 import dice from '../media/img/dice.svg'
 
-const Task = ({ itemId, id }) => {
+const Task = ({ itemId, idItem }) => {
 
     const [task, setTask] = useState(null);
 
     useEffect(() => {
-            fetch(`${host}/incidents/${itemId !== null ? itemId : id}`)
+            fetch(itemId !== 0 ? `${host}/incidents/${ itemId}` : `${host}/incidents/${idItem}`)
                 .then(response => {
                     if (response.status > 400) {
                         return []
@@ -28,7 +28,7 @@ const Task = ({ itemId, id }) => {
 
     return (
         <div className={"bg-gray"}>
-            { itemId !== null && task ?
+            { itemId !== 0 && task ?
                 <div className={"task_window"}>
                     <div className={"task_header_info"}>
                         <div className={"task_header_info_left"}>
