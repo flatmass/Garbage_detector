@@ -23,7 +23,7 @@ if __name__ == '__main__':
     cfg.DATASETS.TRAIN = ("my_dataset_train",)
     cfg.DATASETS.TEST = ("my_dataset_train",)
 
-    cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR, "model_final.pth")
+    cfg.MODEL.WEIGHTS = os.path.join("coco_eval", "coco_eval/model_final.pth")
 
     cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.8  # set the testing threshold for this model
 
